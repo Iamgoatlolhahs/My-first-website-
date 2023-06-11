@@ -1,0 +1,51 @@
+let textColor = "#000000"; // Customize text color
+let textSize = "60px"; // Customize text size
+let imageWidth = "200px"; // Customize image width
+let linkColor = "#0000ff"; // Customize link color
+
+let htmlContent = `
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Web Page</title>
+  <style>
+    body {
+      color: ${textColor};
+      font-size: ${textSize};
+    }
+    img {
+      width: ${imageWidth};
+    }
+    a {
+      color: ${linkColor};
+    }
+  </style>
+  <script>
+    function handleImageUpload(event) {
+      let selectedFile = event.target.files[0];
+      let imgElement = document.getElementById("uploaded-image");
+
+      // Handle the selected image file as needed
+      // e.g., display it in an <img> tag
+      imgElement.src = URL.createObjectURL(selectedFile);
+    }
+  </script>
+</head>
+<body>
+  <h1>Welcome to conors web page!</h1>
+  <p>Try uploading a image.</p>
+  <input type="file" accept="image/jpeg" onchange="handleImageUpload(event)">
+  <img id="uploaded-image" src="" alt="Uploaded Image">
+  <a href="https://youtube.com">also click me</a> to visit youtube because its possible.
+</body>
+</html>
+`;
+
+// Create a WebView
+let webView = new WebView();
+
+// Load the HTML content into the WebView
+webView.loadHTML(htmlContent);
+
+// Present the WebView
+webView.present();
